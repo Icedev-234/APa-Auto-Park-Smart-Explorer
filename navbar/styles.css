@@ -30,14 +30,6 @@ html::-webkit-scrollbar-thumb{
   --container-color: #2d2e37;
 }
 
-body {
-  height: 100vh;
-  position: relative;
-  top: 100px;
-  background-color: #2d6f89;
-  color: aliceblue;
-}
-
 header{
   position: fixed;
   width:100%;
