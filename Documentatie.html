@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Documentatie</title>
+</head>
+
+<body>
+
+    <article>
+        <header>
+            <h1>
+                Auto Park Smart Explorer
+            </h1>
+        </header>
+
+        <div role="contentinfo">
+            <section typeof="sa:AuthorsList">
+                <h2>Autori</h2>
+                <ul>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Victor">
+                            <meta property="schema:familyName" content="Rosca">
+                            <span property="schema:name">Victor Rosca</span>
+                        </span>
+                    </li>
+
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Rotaru">
+                            <meta property="schema:familyName" content="Alex">
+                            <span property="schema:name">Rotaru Alex</span>
+                        </span>
+                    </li>
+
+                </ul>
+            </section>
+        </div>
+
+        <section>
+            <h3>1. Introducere</h3>
+            <section>
+                <h4>1.1 Scop</h4>
+                <p>
+                    Scopul acestui document este de a prezenta o descriere detaliata a aplicatiei web Auto Park Smart Explorer.
+                    Vor fi explicate scopul si functionalitatile software-ului, interfata 
+                    software-ului, capacitatile si functiile software-ului si cum opereaza tinand cont de 
+                    constrangeri. Acest document este destinat posibililor utilizatori al software-ului.  
+                </p>
+            </section>
+
+            <section>
+                <h4>1.2 Conventii ale documentului</h4>
+                <p>
+                    Acest document a fost creat pe baza template-ului IEEE pentru system Requirement
+                    Specification Documents.
+                </p>
+            </section>
+
+            <section>
+                <h4>1.3 Intended Audience and Reading Suggestions</h4>
+                <p>
+                    Utilizatori normali care doresc sa foloseasca aplicatia pentru a gasi informaii referitoare la parcul auto din Romania.
+                </p>
+            </section>
+
+            <section>
+                <h4>1.4 Scopul Produsului</h4>
+                <p>
+                    Auto Park Smart Explorer a fost dezvoltat cu scopul de a gestiona si oferii informatii referitoare la datele publice privind parcul auto din Romania pentru ultimii 10 ani.
+                </p>
+            </section>
+
+            <section>
+                <h4>1.5 Referinte</h4>
+                <ol>
+                    <li typeof="schema:WebPage" role="doc-biblioentry"
+                        resource="https://github.com/Icedev-234/APa-Auto-Park-Smart-Explorer" property="schema:citation">
+                        <cite property="schema:name">
+                            <a href="https://github.com/Icedev-234/APa-Auto-Park-Smart-Explorer">Pagina Github Auto Park Smart Explorer</a>
+                        </cite>
+                    </li>
+                    <li typeof="schema:WebPage" role="doc-biblioentry"
+                        resource="https://github.com/rick4470/IEEE-SRS-Tempate#42-system-feature-2-and-so-on"
+                        property="schema:citation">
+                        <cite property="schema:name">
+                            <a href="https://github.com/rick4470/IEEE-SRS-Tempate#42-system-feature-2-and-so-on">IEEE
+                                Template for System Requirements Specification Documents</a>
+                        </cite>
+                    </li>
+                </ol>
+            </section>
+
+
+
+        </section>
+
+        <section>
+            <h3>2.Descriere generala</h3>
+            <section>
+                <h4>2.1 Descrierea Produsului</h4>
+                <p>
+                    Aplicatia Auto Park Smart Explorer, este developata
+                    pentru persoanele care vor sa caute informatii despre parcul auto
+                    dintr-un anumit judet din Romania, in functie de tipul de vehicul, categorie sau ani.
+                </p>
+            </section>
+
+            <section>
+                <h4>2.2 Functiile Produsului</h4>
+                <p>
+                    Aplicatia web managerieaza informatiile despre parcul auto dintr-un judet ce face parte din Romania. Despre acest parc
+                    sunt informatii precum : anul in care s-a facut masuratoarea pentru parc, valoarea propriu zisa ce reprezinta numarul de masini aflate in parc
+                    in anul respectiv, vizualizarea datelor folosind Map, Table si Line.
+                    Exportarea charturilor in unul din formatele: CSV, WEBP, SVG si selectarea unui singur judet asupra caruia ii se vor aplica filtre.
+                </p>
+                
+                <p>Statistics/Index page : Pagina din care pot fi accesate celelalte pagini ale website-ului</p>
+                <ul>
+                    <li>
+                        login : redirectioneaza catre login page.
+                    </li>
+                    <li>
+                        contact : redirectioneaza catre contact page.
+                    </li>
+                    <li>
+                        about : redirectioneaza catre about page.
+                    </li>
+                </ul>
+
+                Login page :
+                <ul>
+                    <li>
+                        log in : valideaza logarea utilizatorului si il redirectioneaza catre
+                                index page
+                    </li>
+                </ul>
+
+                Admin page :
+                <ul>
+                    <li>
+                        login : redirectioneaza catre login page.
+                    </li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h4>2.3 Clasele și caracteristicile utilizatorilor</h4>
+                <ul>
+                    <li>
+                        User : user asociat cu un cont poate utiliza facilitatile website-ului.
+                    </li>
+                    <li>
+                        Admin : are optiunea de a manageria aspecte diferite ale website-ului.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>2.4 Mediul de operare</h4>
+                <p>
+                    Pagina web poate fi utilizata pe orice device care are o conexiune la internet si un browser instalat.
+                </p>
+            </section>
+
+            <section>
+                <h4>2.5 Constrângeri de proiectare și implementare</h4>
+                <p>
+                    Auto Park Smart Explorer va fi dezvoltat in Php/Python, si va folosi html, css si javascript pentru interfata.
+                </p>
+            </section>
+
+        </section>
+
+        <section>
+            <h3>3. External Interface Requirements</h3>
+
+            <section>
+                <h4>3.1 User Interfaces</h4>
+                <figure typeof="sa:image">
+                    <figcaption>Statistics/Index page</figcaption>
+                    <img src="./project_schema_UI/main_page.png" alt="index_page" width="700">
+                </figure>
+                <figure typeof="sa:image">
+                    <figcaption>Admin page</figcaption>
+                    <img src="./project_schema_UI/admin.png" alt="admin_page" width="700">
+                </figure>  
+                <figure typeof="sa:image">
+                    <figcaption>Login page</figcaption>
+                    <img src="./project_schema_UI/login.png" alt="login_page" width="700">
+                </figure>
+                <figure typeof="sa:image">
+                    <figcaption>Security and Policy page</figcaption>
+                    <img src="./project_schema_UI/security_and_policy.png" alt="login_page" width="700">
+                </figure>
+                <figure typeof="sa:image">
+                    <figcaption>About page</figcaption>
+                    <img src="./project_schema_UI/about.png" alt="about_page" width="700">
+                </figure>   
+                <figure typeof="sa:image">
+                    <figcaption>Contact page</figcaption>
+                    <img src="./project_schema_UI/contact.png" alt="contact_page" width="700">
+                </figure>           
+            </section>
+
+            <section>
+                <h4>3.3 Interfata Software</h4>
+                <p>
+                    Cerintele minime pentru utilizarea aplicatiei sunt o conexiune la internet si un browser functional.
+                </p>
+            </section>
+
+            <section>
+                <h4>3.4 Interfata de comunicare</h4>
+                <p>
+                    Aplicatia Auto Park Smart Explorer are nevoie de o conexiune la internet. Va fi folosita comunicarea standard prin HTTP.
+                </p>
+            </section>
+
+        </section>
+
+        <section>
+            <h3>4. System Features</h3>
+
+            <section>
+                <h4>4.1 Statistics/Index page</h4>
+                <p>
+                    Oaspeții și utilizatorii pot naviga la toate celelalte pagini de pe această pagină.
+                    De asemenea, utilizatorii pot cauta diferite judete asupra carora se aplica filtre si are posibilitatea de a vizualiza rezultatul sub forma unui chart la alegere.
+                </p>
+
+                <h4>4.2 Login page</h4>
+                <p>
+                    Utilizatorii aplicației se pot autentifica introducând informatiile corecte și, dupa validare, accesează alte funcționalități ale aplicației.
+                </p>
+
+                <h4>4.3 Admin page</h4>
+                <p>
+                    Utilizatorul cu rol de admin al aplicației poate sa insereze, sa modifice sau sa stearga datele. De asemenea, acesta poate sa le caute dupa anumite filtre. 
+                </p>
+
+                <h4>4.4 Security_and_policy</h4>
+                <p>
+                    Utilizatorul deja logat in aplicației poate sa isi modifice parola cu care are loc actiunea de login.
+                </p>
+
+                <h4>4.5 About page</h4>
+                <p>
+                    Utilizatori conectati sau nu pot observa informatiile despre pagina noastra
+                </p>
+
+                <h4>4.6 Contact page</h4>
+                <p>
+                    Utilizatori conectati sau nu pot observa informatii despre dezvoltatorii aplicatiei
+                </p>
+            </section>
+        </section>
+
+        <section>
+            <h3>5. Cerinte Nonfunctionale</h3>
+
+            <section>
+                <h4>5.2 Safety Requirements</h4>
+                <p>
+                    Pentru a se asigura că niciunul dintre utilizatorii Auto Park Smart Explorer nu pierde date în timpul utilizării aplicației, echipa de
+                    dezvoltatori lucrează în mod regulat la Auto Park Smart Explorer.
+                </p>
+            </section>
+
+            <section>
+                <h4>5.3 Cerinte de securitate</h4>
+                <p>
+                    Auto Park Smart Explorer nu are cerințe de securitate și, prin urmare, orice tip de utilizator îl poate folosi fără
+                    privilegii suplimentare.
+                </p>
+            </section>
+
+            <section>
+                <h4>5.4 Software Quality Attributes</h4>
+                <ul>
+                    <li>Adaptabilitate</li>
+                    <li>Întreținere</li>
+                    <li>Reutilizabilitate</li>
+                    <li>Disponibilitate</li>
+                </ul>
+            </section>
+
+        </section>
+
+        <section>
+            <h3>Contributie</h3>
+            <section>
+                <h4>Rosca Victor:</h4>
+                <ul>
+                    <li>Site design projection</li>
+                    <li>Overall site design structure</li>
+                    <li>Specific page design implementation</li>
+                    <li>Login page</li>
+                    <li>Security and policy page</li>
+                    <li>About page</li>
+                    <li>Contact page</li>
+                    <li>Documentatie</li>
+                </ul>
+                <h4>Rotaru Alex:</h4>
+                <ul>
+                    <li>Site design projection</li>
+                    <li>Specific page design implementation</li>
+                    <li>Statistics page</li>
+                    <li>Admin page</li>
+                    <li>Documentatie</li>
+                </ul>
+            </section>
+        </section>
+
+
+    </article>
+
+
+
+</body>
+
+</html>
