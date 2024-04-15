@@ -183,7 +183,7 @@
   }
 
 
-  td #edit{
+  td .edit{
     padding: 0.7rem 1.4rem;
     background: greenyellow;
     color: var(--bg-color);
@@ -192,12 +192,12 @@
     cursor: pointer;
   }
 
-  td #edit:hover{
+  td .edit:hover{
     background: rgb(122, 180, 35);
     transition: 0.3s linear;
   }
 
-  td #delete{
+  td .delete{
     padding: 0.7rem 1.4rem;
     background: red;
     color: var(--bg-color);
@@ -206,7 +206,7 @@
     cursor: pointer;
   }
 
-  td #delete:hover{
+  td .delete:hover{
       background: rgb(170, 0, 0);
       transition: 0.3s linear;
   }
