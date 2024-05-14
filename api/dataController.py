@@ -11,11 +11,12 @@ class dataController:
         query = "SELECT id, JUDET, CATEGORIE_NATIONALA, CATEGORIA_COMUNITARA, MARCA FROM data ORDER BY TOTAL DESC"
         result = runSQL(self.conn, query)
         response = {
-            'status_code_header': 'HTTP/1.1 200 OK',
+            #ok
+            'status_code_header': 200,
             'body': json.dumps(result)
         }
         return response
-
+    
     def addData(self, entry):
         sql = "INSERT INTO data(JUDET, CATEGORIE_NATIONALA, CATEGORIA_COMUNITARA, MARCA, TOTAL) VALUES (%s, %s, %s, %s, %s)"
         time_created = datetime.now().strftime('%d/%m/%y %H:%M:%S')
@@ -23,7 +24,8 @@ class dataController:
         cursor.execute(sql, (entry['JUDET'], entry['CATEGORIE_NATIONALA'], entry['CATEGORIA_COMUNITARA'], entry['MARCA'], time_created))
         self.conn.commit()
         response = {
-            'status_code_header': 'HTTP/1.1 201 CREATED',
+            #created
+            'status_code': 201,  
             'body': json.dumps(entry)
         }
         return response
@@ -34,7 +36,8 @@ class dataController:
         cursor.execute(sql, (entryId,))
         self.conn.commit()
         response = {
-            'status_code_header': 'HTTP/1.1 204 NO CONTENT',
+            #no content
+            'status_code_header': 204,
             'body': json.dumps(entryId)
         }
         return response
@@ -46,7 +49,8 @@ class dataController:
         cursor.execute(sql, (entry['JUDET'], entry['CATEGORIE_NATIONALA'], entry['CATEGORIA_COMUNITARA'], entry['MARCA'], time_updated, entryId))
         self.conn.commit()
         response = {
-            'status_code_header': 'HTTP/1.1 204 NO CONTENT',
+            #no content
+            'status_code_header': 204,
             'body': json.dumps(entryId)
         }
         return response
@@ -65,7 +69,8 @@ class dataController:
         totalPages = totalRecords // pageSize + (1 if totalRecords % pageSize else 0)
 
         response = {
-            'status_code_header': 'HTTP/1.1 200 OK',
+            #ok
+            'status_code_header': 200,
             'body': json.dumps({
                 'pageNumber': pageNumber,
                 'pageSize': pageSize,
