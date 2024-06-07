@@ -55,6 +55,7 @@
                       <th>Categorie Comunitara</th>
                       <th>Marca</th>
                       <th>Descriere Comerciala</th>
+                      <th>An</th>
                       <th>Actions</th>
                     </tr>
                   </thead>

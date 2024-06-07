@@ -133,17 +133,7 @@ echo $_SESSION['username'];
       <div class="chart-options">
         <div class="select-box">
           <label id="label-1"><i class='bx bx-time-five'></i>Ani</label>
-          <select id="select-1">
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-            <option value="2019">2019</option>
-            <option value="2018">2018</option>
-            <option value="2017">2017</option>
-            <option value="2016">2016</option>
-            <option value="2015">2015</option>
+          <select id="select-1 years">
             <option value="2014">2014</option>
             <option value="2013">2013</option>
           </select>
@@ -164,7 +154,7 @@ echo $_SESSION['username'];
 
 
     <script src="./scripts/statistics.js"></script>
-    <script src="./navbar/main.js"></script>
+    <script src="./scripts/main.js"></script>
 
 
   </body>

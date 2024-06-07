@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 if (isset($_POST['id'])) {
     $id = intval($_POST['id']);
-    $sql = "DELETE FROM your_table WHERE id = $id";
+    $sql = "DELETE FROM data WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["status" => "success"]);
     } else {

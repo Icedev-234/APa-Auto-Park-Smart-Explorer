@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to fetch data
-$sql = "SELECT ID, JUDET, CATEGORIE_NATIONALA, CATEGORIA_COMUNITARA, MARCA, DESCRIERE_COMERCIALA FROM data";
+$sql = "SELECT ID, JUDET, CATEGORIE_NATIONALA, CATEGORIA_COMUNITARA, MARCA, DESCRIERE_COMERCIALA, AN FROM data";
 $result = $conn->query($sql);
 
 $data = array();

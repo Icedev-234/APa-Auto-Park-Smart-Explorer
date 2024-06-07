@@ -32,7 +32,7 @@
       </header>
       
           <div class="content">
-            <form method="post" action="./api/login-system.php">
+            <form method="post" action="api/login-system.php">
               <div class="box">
                   <div class="img">
                       <img src="./resources/logo_car.png" alt="Car Icon" style="width:33%; height:25%">

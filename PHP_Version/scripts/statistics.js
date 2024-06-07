@@ -1,9 +1,9 @@
 const exportButton = document.getElementById("export-button");
 const resultsButton = document.querySelector(".results-button");
-const year=document.getElementById("select-1")
 const seljudete= document.getElementById("select-classroom select-2");
 const selcateg_nat=document.getElementById("select-classroom select-4");
 const selecateg_comunit=document.getElementById("select-classroom select-3");
+const selAn=document.getElementById("select-1 years");
 let myChart = null;
 let C=null;
 
@@ -19,17 +19,20 @@ resultsButton.addEventListener("click", async function () {
             var Categorie_Comunitara = [];
             var Total = [];
             var Marca=[];
+            var An=[];
             var filteredData=[];
             let valJud=seljudete.value.toUpperCase();
             let valselcateg_nat=selcateg_nat.value.toUpperCase();
             let valselcateg_com=selecateg_comunit.value.toUpperCase();
+            let valAN=selAn.value.toUpperCase();
             data.forEach(function(item) {
-            if((item.JUDET.includes(valJud))&&(item.CATEGORIE_NATIONALA.includes(valselcateg_nat))&&(item.CATEGORIA_COMUNITARA.includes(valselcateg_com))){
+            if((item.JUDET.includes(valJud))&&(item.CATEGORIE_NATIONALA.includes(valselcateg_nat))&&(item.CATEGORIA_COMUNITARA.includes(valselcateg_com))&&(item.AN.includes(valAN))){
               judete.push(item.JUDET);
               Categorie_Nationala.push(item.CATEGORIE_NATIONALA);
               Categorie_Comunitara.push(item.CATEGORIA_COMUNITARA);
               Total.push(item.TOTAL);
               Marca.push(item.MARCA);
+              An.push(item.AN);
               }
           });
 

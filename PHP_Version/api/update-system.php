@@ -16,7 +16,7 @@ if (isset($_POST['id']) && isset($_POST['field']) && isset($_POST['value'])) {
     $id = intval($_POST['id']);
     $field = $_POST['field'];
     $value = $_POST['value'];
-    $sql = "UPDATE your_table SET $field = '$value' WHERE id = $id";
+    $sql = "UPDATE data SET $field = '$value' WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["status" => "success"]);
     } else {

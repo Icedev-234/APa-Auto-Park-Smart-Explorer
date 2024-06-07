@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const CATEGORIE_COMUNITARA=row.CATEGORIA_COMUNITARA;
                 const MARCA=row.MARCA;
                 const DESCRIERE_COMERCIALA=row.DESCRIERE_COMERCIALA;
+                const AN= row.AN;
                 tr.innerHTML = `
                     <td>${ID}</td>
                     <td>${JUDET}</td>
@@ -32,9 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${CATEGORIE_COMUNITARA}</td>
                     <td>${MARCA}</td>
                     <td id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
+                    <td>${AN}</td>
                     <td>
-                    <button id="edit" class="btn btn-primary edit_${ID}">Edit</button>
-                    <button id="delete" class="btn btn-dange delete_${ID}">Delete</button>
+                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateRow(${ID}, 'DESCRIERE_COMERCIALA', 'modified')">Update</button>
+                    <button id="delete" class="btn btn-dange delete_${ID}" onclick="deleteRow(${ID})">Delete</button>
                    <span></span>
                   </td>
                     <!-- Add more table cells as needed -->
@@ -44,9 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 
 
                 editButton.addEventListener("click", function(){
-                 if(editButton.textContent=="Edit"){
+                 if(editButton.textContent=="Update"){
                   editButton.textContent=="Save";
+                 }else{
+                    updateRow(ID,DESCRIERE_COMERCIALA,"modified");
                  }
+                });
+
+                deleteButton.addEventListener("click", function(){
+                    deleteRow(ID);
+
                 });
 
                 tableBody.appendChild(tr);
@@ -86,52 +95,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fetchData();
      
-        function deleteRow(button) {
-          const row = button.closest('tr');
-          const id = row.getAttribute('data-id');
-      
-          fetch('http://localhost/APa/api/delete-system.php', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ id })
-          })
-          .then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  row.remove();
-              } else {
-                  alert('Error deleting row');
-              }
-          })
-          .catch(error => console.error('Error:', error));
-      }
-      
-      function updateRow(button) {
-          const row = button.closest('tr');
-          const id = row.getAttribute('data-id');
-          const newName = prompt('Enter new name:');
-          
-          if (newName) {
-              fetch('http://localhost/APa/api/update-system.php', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({ id, name: newName })
-              })
-              .then(response => response.json())
-              .then(data => {
-                  if (data.success) {
-                      row.cells[1].innerText = newName;
-                  } else {
-                      alert('Error updating row');
-                  }
-              })
-              .catch(error => console.error('Error:', error));
-          }
-      }
+        function deleteRow(id) {
+            if (confirm("Are you sure you want to delete this row?")) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "http://localhost/APa/api/delete-system.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.status === "success") {
+                            alert("Row deleted successfully.");
+                            // Optionally, remove the row from the table
+                            document.getElementById("row_" + id).remove();
+                        } else {
+                            alert("Error: " + response.message);
+                        }
+                    }
+                };
+                xhr.send("id=" + id);
+                fetchData();
+            }
+        }
+
+        function updateRow(id, field, value) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost/APa/api/update-system.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        alert("Row updated successfully.");
+                        // Optionally, update the UI with the new value
+                        document.getElementById(field + "_" + id).innerText = value;
+                    } else {
+                        alert("Error: " + response.message);
+                    }
+                }
+            };
+            xhr.send("id=" + id + "&field=" + field + "&value=" + value);
+            fetchData();
+        }
 
 
 });
