@@ -1,36 +1,28 @@
 <?php
-header('Content-Type: application/json');
-
-$input = json_decode(file_get_contents('php://input'), true);
-
-if (isset($input['id'])) {
-    $id = $input['id'];
-
-    $servername = "localhost";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "apa";
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Database connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die(json_encode(['success' => false, 'error' => $conn->connect_error]));
-    }
-
-    $stmt = $conn->prepare('DELETE FROM data WHERE id = ?');
-    $stmt->bind_param('i', $id);
-
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true]);
-    } else {
-        echo json_encode(['success' => false, 'error' => $stmt->error]);
-    }
-
-    $stmt->close();
-    $conn->close();
-} else {
-    echo json_encode(['success' => false, 'error' => 'Invalid ID']);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+if (isset($_POST['id'])) {
+    $id = intval($_POST['id']);
+    $sql = "DELETE FROM your_table WHERE id = $id";
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(["status" => "success"]);
+    } else {
+        echo json_encode(["status" => "error", "message" => $conn->error]);
+    }
+} else {
+    echo json_encode(["status" => "error", "message" => "Invalid ID"]);
+}
+
+$conn->close();
 ?>
