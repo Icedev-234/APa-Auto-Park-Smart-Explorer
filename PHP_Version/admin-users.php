@@ -42,25 +42,15 @@
         <div id="main">
             <div class="users-container">
               <h1>Welcome, Admin!</h1>
-              <div class="table-control">
-                <div class="buttons">
-                <button id="int1" class="btn active" >2013-2014</button>
-                <button id="int2">2015-2016</button>
-                <button id="int3">2017</button>
-                </div>
-                </div>
               <div class="table-container">
                 <table id="user-table">
                   <thead>
                     
                     <tr>
                       <th>ID</th>
-                      <th>Judet</th>
-                      <th>Categorie Nationala</th>
-                      <th>Categorie Comunitara</th>
-                      <th>Marca</th>
-                      <th>Descriere Comerciala</th>
-                      <th>An</th>
+                      <th>Username</th>
+                      <th>Password</th>
+                      <th>Rol User</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -80,6 +70,6 @@
             </div>
           </div>
        <script src="./scripts/main.js"></script>
-       <script src="./scripts/admin.js"></script>
+       <script src="./scripts/admin-users.js"></script>
 </body>
 </html>

@@ -222,6 +222,17 @@
     top: 20px;
   }
 
+  .buttons #int1,.buttons #int2,.buttons #int3{
+    text-align: center;
+    padding: 20px 40px;
+    border: 1px solid #2C3E50;
+    white-space: nowrap;
+    font-weight: 600;
+    background: var(--main-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
   #previous{
     text-align: center;
     padding: 20px 40px;

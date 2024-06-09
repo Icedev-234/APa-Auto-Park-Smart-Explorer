@@ -9,7 +9,8 @@ let C=null;
 
 
 resultsButton.addEventListener("click", async function () {
-  
+  let valAN=selAn.value.toUpperCase();
+  if (valAN=="2013" || valAN=="2014"){
      await fetch('http://localhost/APa/api/data.php')
           .then (async response => await response.json())
           .then(data => {
@@ -24,7 +25,6 @@ resultsButton.addEventListener("click", async function () {
             let valJud=seljudete.value.toUpperCase();
             let valselcateg_nat=selcateg_nat.value.toUpperCase();
             let valselcateg_com=selecateg_comunit.value.toUpperCase();
-            let valAN=selAn.value.toUpperCase();
             data.forEach(function(item) {
             if((item.JUDET.includes(valJud))&&(item.CATEGORIE_NATIONALA.includes(valselcateg_nat))&&(item.CATEGORIA_COMUNITARA.includes(valselcateg_com))&&(item.AN.includes(valAN))){
               judete.push(item.JUDET);
@@ -183,6 +183,353 @@ resultsButton.addEventListener("click", async function () {
             }
                 })
                 .catch(error => console.error('Error fetching data:', error));
+    } else if(valAN=="2015"||valAN=="2016"){
+      await fetch('http://localhost/APa/api/data2.php')
+          .then (async response => await response.json())
+          .then(data => {
+            console.log(data);
+            var judete = [];
+            var Categorie_Nationala = [];
+            var Categorie_Comunitara = [];
+            var Total = [];
+            var Marca=[];
+            var An=[];
+            var filteredData=[];
+            let valJud=seljudete.value.toUpperCase();
+            let valselcateg_nat=selcateg_nat.value.toUpperCase();
+            let valselcateg_com=selecateg_comunit.value.toUpperCase();
+            data.forEach(function(item) {
+            if((item.JUDET.includes(valJud))&&(item.CATEGORIE_NATIONALA.includes(valselcateg_nat))&&(item.CATEGORIA_COMUNITARA.includes(valselcateg_com))&&(item.AN.includes(valAN))){
+              judete.push(item.JUDET);
+              Categorie_Nationala.push(item.CATEGORIE_NATIONALA);
+              Categorie_Comunitara.push(item.CATEGORIA_COMUNITARA);
+              Total.push(item.TOTAL);
+              Marca.push(item.MARCA);
+              An.push(item.AN);
+              }
+          });
+
+            const ctx = document.getElementById('chart');
+            if (myChart) {
+              myChart.destroy();
+            }
+            const Visualization=document.getElementById("select-2 vs");
+            C=Visualization.value;
+            switch(C)
+           { case 'line':
+                     myChart = new Chart(ctx, {
+                        type: 'line', // or 'line', 'pie', etc.
+                        data: {
+                            labels: Marca,
+                            datasets: [{
+                                label: 'Total',
+                                data: Total,
+                                backgroundColor: 'black',
+                                borderColor: 'black',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                          animation: false,
+                          resposive: false,
+                          maintainAspectRatio: false,
+                          scales: {
+                            y: {
+                              ticks: {
+                                color: "black",
+                              },
+                            },
+                            x: {
+                              ticks: {
+                                color: "black",
+                              },
+                            },
+                          },
+                
+                          plugins: {
+                            title: {
+                              display: true,
+                              text: "Total per country",
+                              color: "black",
+                              font: {
+                                size: 18,
+                              },
+                            },
+                            legend: {
+                              labels: {
+                                color: "black",
+                              },
+                            },
+                          },
+                        }
+                    });
+             case 'bar':
+              myChart = new Chart(ctx, {
+               // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+
+        data: {
+          labels: Marca,
+          datasets: [
+            {
+              type:'bar',
+              label: 'Total',
+              data: Total,
+              backgroundColor: "red",
+            },
+          ],
+        },
+
+        options: {
+          animation: false,
+          resposive: false,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              ticks: {
+                color: "black",
+              },
+            },
+            x: {
+              ticks: {
+                color: "black",
+              },
+            },
+          },
+
+          plugins: {
+            title: {
+              display: true,
+              text: "Total per country",
+              color: "black",
+              font: {
+                size: 18,
+              },
+            },
+            legend: {
+              labels: {
+                color: "black",
+              },
+            },
+          },
+        }
+              });  
+             case 'doughnut':
+              myChart = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                  datasets: [
+                    {
+                      data: Total,
+                      backgroundColor: [
+                        "red",
+                        "blue",
+                        "yellow",
+                        "green",
+                        "purple",
+                        "gray",
+                      ],
+                      borderWidth: 0,
+                    },
+                  ],
+                  labels: Marca,
+                },
+        
+                options: {
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: "Total Parks by Country",
+                      color: "black",
+                      font: {
+                        size: 18,
+                      },
+                    },
+        
+                    legend: {
+                      labels: {
+                        color: "black",
+                      },
+                    },
+                  },
+                },
+              });
+            }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+    } else if (valAN=="2017"){
+      await fetch('http://localhost/APa/api/data3.php')
+          .then (async response => await response.json())
+          .then(data => {
+            console.log(data);
+            var judete = [];
+            var Categorie_Nationala = [];
+            var Categorie_Comunitara = [];
+            var Total = [];
+            var Marca=[];
+            var An=[];
+            var filteredData=[];
+            let valJud=seljudete.value.toUpperCase();
+            let valselcateg_nat=selcateg_nat.value.toUpperCase();
+            let valselcateg_com=selecateg_comunit.value.toUpperCase();
+            data.forEach(function(item) {
+            if((item.JUDET.includes(valJud))&&(item.CATEGORIE_NATIONALA.includes(valselcateg_nat))&&(item.CATEGORIA_COMUNITARA.includes(valselcateg_com))&&(item.AN.includes(valAN))){
+              judete.push(item.JUDET);
+              Categorie_Nationala.push(item.CATEGORIE_NATIONALA);
+              Categorie_Comunitara.push(item.CATEGORIA_COMUNITARA);
+              Total.push(item.TOTAL);
+              Marca.push(item.MARCA);
+              An.push(item.AN);
+              }
+          });
+
+            const ctx = document.getElementById('chart');
+            if (myChart) {
+              myChart.destroy();
+            }
+            const Visualization=document.getElementById("select-2 vs");
+            C=Visualization.value;
+            switch(C)
+           { case 'line':
+                     myChart = new Chart(ctx, {
+                        type: 'line', // or 'line', 'pie', etc.
+                        data: {
+                            labels: Marca,
+                            datasets: [{
+                                label: 'Total',
+                                data: Total,
+                                backgroundColor: 'black',
+                                borderColor: 'black',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                          animation: false,
+                          resposive: false,
+                          maintainAspectRatio: false,
+                          scales: {
+                            y: {
+                              ticks: {
+                                color: "black",
+                              },
+                            },
+                            x: {
+                              ticks: {
+                                color: "black",
+                              },
+                            },
+                          },
+                
+                          plugins: {
+                            title: {
+                              display: true,
+                              text: "Total per country",
+                              color: "black",
+                              font: {
+                                size: 18,
+                              },
+                            },
+                            legend: {
+                              labels: {
+                                color: "black",
+                              },
+                            },
+                          },
+                        }
+                    });
+             case 'bar':
+              myChart = new Chart(ctx, {
+               // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+
+        data: {
+          labels: Marca,
+          datasets: [
+            {
+              type:'bar',
+              label: 'Total',
+              data: Total,
+              backgroundColor: "red",
+            },
+          ],
+        },
+
+        options: {
+          animation: false,
+          resposive: false,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              ticks: {
+                color: "black",
+              },
+            },
+            x: {
+              ticks: {
+                color: "black",
+              },
+            },
+          },
+
+          plugins: {
+            title: {
+              display: true,
+              text: "Total per country",
+              color: "black",
+              font: {
+                size: 18,
+              },
+            },
+            legend: {
+              labels: {
+                color: "black",
+              },
+            },
+          },
+        }
+              });  
+             case 'doughnut':
+              myChart = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                  datasets: [
+                    {
+                      data: Total,
+                      backgroundColor: [
+                        "red",
+                        "blue",
+                        "yellow",
+                        "green",
+                        "purple",
+                        "gray",
+                      ],
+                      borderWidth: 0,
+                    },
+                  ],
+                  labels: Marca,
+                },
+        
+                options: {
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: "Total Parks by Country",
+                      color: "black",
+                      font: {
+                        size: 18,
+                      },
+                    },
+        
+                    legend: {
+                      labels: {
+                        color: "black",
+                      },
+                    },
+                  },
+                },
+              });
+            }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+    }
               
   });
 
