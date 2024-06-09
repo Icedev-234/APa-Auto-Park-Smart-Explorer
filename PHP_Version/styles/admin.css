@@ -222,7 +222,7 @@
     top: 20px;
   }
 
-  .buttons #int1,.buttons #int2,.buttons #int3{
+  #int1{
     text-align: center;
     padding: 20px 40px;
     border: 1px solid #2C3E50;
@@ -231,6 +231,33 @@
     background: var(--main-color);
     border-radius: 0.5rem;
     cursor: pointer;
+  }
+
+  #int2{
+    text-align: center;
+    padding: 20px 40px;
+    border: 1px solid #2C3E50;
+    white-space: nowrap;
+    font-weight: 600;
+    background: var(--main-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  #int3{
+    text-align: center;
+    padding: 20px 40px;
+    border: 1px solid #2C3E50;
+    white-space: nowrap;
+    font-weight: 600;
+    background: var(--main-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  #int1:hover, #int2:hover, #int3:hover{
+    background: rgb(56, 71, 95);
+      transition: 0.3s linear;
   }
 
   #previous{

@@ -26,19 +26,19 @@
             <li><a href="#"><i class='bx bx-cog' ></i>Security and Policy</a></li>
             <li><a href="#" ><i class='bx bx-stats' ></i>Statistics</a></li>
         </ul>
-          <a href="#" class="btn">
+          <a href="login.php" class="btn">
             Log in <i class='bx bxs-user-detail' ></i>
           </a>
       </header>
       
           <div class="content">
-            <form method="post" action="api/login-system.php">
+            <form method="post" id="registerForm">
               <div class="box">
                   <div class="img">
                       <img src="./resources/logo_car.png" alt="Car Icon" style="width:33%; height:25%">
                   </div>
       
-                  <h1>LOG IN</h1>
+                  <h1>REGISTER</h1>
       
                   <div class="container">
                       <label for="username">Username</label><br>
@@ -47,14 +47,14 @@
                       <label for="password">Password</label><br>
                       <input type="password" id="password" placeholder="Enter password" name="password"><br><br>
       
-                      <button type="submit">Login</button><br><br>
-                      <h2>No account? <a href="register.php">Register Here</a></h2>
+                      <button type="submit">Register</button><br><br>
+                      <h2>If you already have an account <a href="login.php">Log In Here</a></h2>
                   </div>
               </div>
             </form>
           </div>
 
-          <script src="./script.js"></script>
+          <script src="./scripts/register.js"></script>
           <script src="./scripts/main.js"></script>
 
     </body>

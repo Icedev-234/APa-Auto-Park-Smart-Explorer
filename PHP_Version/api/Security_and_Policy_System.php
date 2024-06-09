@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $current_password = $_POST['current_password'];
-    $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+    $new_password = $_POST['new_password'];
 
 
     $sql = "SELECT password FROM users WHERE id = ?";
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param('si', $new_password, $_SESSION['user_id']);
         if ($stmt->execute()) {
             echo "Password changed successfully!";
-            header("Location: statistics.php");
+            header("Location: ../statistics.php");
         } else {
             echo "Error: " . $stmt->error;
         }
