@@ -39,6 +39,12 @@ if (!isset($_SESSION['user_id'])&& !isset($_COOKIE['user_id'])) {
     exit;
 }
 
+if ($_SESSION['username']=='Admin') {
+    header("Location: admin.php");
+    
+    exit();
+  }
+
 echo $_SESSION['username'];
 ?> <i class='bx bxs-user-detail' ></i>
       </a>

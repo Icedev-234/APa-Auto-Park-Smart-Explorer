@@ -35,7 +35,7 @@
           <li><a href="./admin.php"><i class='bx bx-cog' ></i>Parking Data</a></li>
           <li><a href="./admin-users.php" ><i class='bx bx-stats' ></i>Users Data</a></li>
       </ul>
-        <a href="#" class="btn">
+        <a href="api/logout.php" class="btn">
           Admin <i class='bx bxs-user-detail' ></i>
         </a>
         </header>

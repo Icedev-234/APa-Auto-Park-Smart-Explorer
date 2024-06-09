@@ -34,7 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $cookie_path = "/";
 
         setcookie('user_id', $user_id, time() + (86400 * 30), "/"); // 86400 = 1 day
+        if ($_SESSION['username']=='Admin'){
+            header("Location: ../admin.php");
+        }
+        else {
         header("Location: ../statistics.php");
+        }
         exit();
     } else {
         echo "$username with $password";
