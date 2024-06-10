@@ -30,8 +30,14 @@ resultsButton.addEventListener("click", async function () {
               judete.push(item.JUDET);
               Categorie_Nationala.push(item.CATEGORIE_NATIONALA);
               Categorie_Comunitara.push(item.CATEGORIA_COMUNITARA);
-              Total.push(item.TOTAL);
+              if(Marca.includes(item.MARCA)){
+                Total[Total.length-1]= String(parseInt(Total[Total.length-1])+ parseInt(item.TOTAL));
+              }
+              else{
               Marca.push(item.MARCA);
+              Total.push(item.TOTAL);
+              }
+              
               An.push(item.AN);
               }
           });
@@ -203,8 +209,15 @@ resultsButton.addEventListener("click", async function () {
               judete.push(item.JUDET);
               Categorie_Nationala.push(item.CATEGORIE_NATIONALA);
               Categorie_Comunitara.push(item.CATEGORIA_COMUNITARA);
-              Total.push(item.TOTAL);
+              if(Marca.includes(item.MARCA)){
+                Total[Total.length-1]= String(parseInt(Total[Total.length-1])+ parseInt(item.TOTAL));
+              }
+              else{
               Marca.push(item.MARCA);
+              Total.push(item.TOTAL);
+              }
+             
+              
               An.push(item.AN);
               }
           });
@@ -376,8 +389,14 @@ resultsButton.addEventListener("click", async function () {
               judete.push(item.JUDET);
               Categorie_Nationala.push(item.CATEGORIE_NATIONALA);
               Categorie_Comunitara.push(item.CATEGORIA_COMUNITARA);
-              Total.push(item.TOTAL);
+              if(Marca.includes(item.MARCA)){
+                Total[Total.length-1]= String(parseInt(Total[Total.length-1])+ parseInt(item.TOTAL));
+              }
+              else{
               Marca.push(item.MARCA);
+              Total.push(item.TOTAL);
+              }
+              
               An.push(item.AN);
               }
           });
