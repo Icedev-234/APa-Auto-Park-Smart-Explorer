@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${CATEGORIE_NATIONALA}</td>
                     <td>${CATEGORIE_COMUNITARA}</td>
                     <td>${MARCA}</td>
-                    <td id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
+                    <td contenteditable="true" id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
                     <td>${AN}</td>
                     <td>
-                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateRow(${ID}, 'DESCRIERE_COMERCIALA', 'modified')">Update</button>
+                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateCell(${ID})">Update</button>
                     <button id="delete" class="btn btn-dange delete_${ID}" onclick="deleteRow(${ID})">Delete</button>
                    <span></span>
                   </td>
@@ -50,11 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
 
                 editButton.addEventListener("click", function(){
-                 if(editButton.textContent=="Update"){
-                  editButton.textContent=="Save";
-                 }else{
-                    updateRow(ID,DESCRIERE_COMERCIALA,"modified");
-                 }
+                    updateCell(ID);
                 });
 
                 deleteButton.addEventListener("click", function(){
@@ -97,10 +93,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${CATEGORIE_NATIONALA}</td>
                     <td>${CATEGORIE_COMUNITARA}</td>
                     <td>${MARCA}</td>
-                    <td id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
+                    <td contenteditable="true" id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
                     <td>${AN}</td>
                     <td>
-                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateRow(${ID}, 'DESCRIERE_COMERCIALA', 'modified')">Update</button>
+                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateCell(${ID})">Update</button>
                     <button id="delete" class="btn btn-dange delete_${ID}" onclick="deleteRow(${ID})">Delete</button>
                    <span></span>
                   </td>
@@ -111,11 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
 
                 editButton.addEventListener("click", function(){
-                 if(editButton.textContent=="Update"){
-                  editButton.textContent=="Save";
-                 }else{
-                    updateRow(ID,DESCRIERE_COMERCIALA,"modified");
-                 }
+                    updateCell(ID);
                 });
 
                 deleteButton.addEventListener("click", function(){
@@ -158,10 +150,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${CATEGORIE_NATIONALA}</td>
                     <td>${CATEGORIE_COMUNITARA}</td>
                     <td>${MARCA}</td>
-                    <td id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
+                    <td contenteditable="true" id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
                     <td>${AN}</td>
                     <td>
-                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateRow(${ID}, 'DESCRIERE_COMERCIALA', 'modified')">Update</button>
+                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateCell(${ID})">Update</button>
                     <button id="delete" class="btn btn-dange delete_${ID}" onclick="deleteRow(${ID})">Delete</button>
                    <span></span>
                   </td>
@@ -172,11 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
 
                 editButton.addEventListener("click", function(){
-                 if(editButton.textContent=="Update"){
-                  editButton.textContent=="Save";
-                 }else{
-                    updateRow(ID,DESCRIERE_COMERCIALA,"modified");
-                 }
+                    updateCell(ID);
                 });
 
                 deleteButton.addEventListener("click", function(){
@@ -333,61 +321,61 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         }
 
-        function updateRow(id, field, value) {
+        function updateCell(id) {
             if(cat==1){
+                if(confirm("Are you sure you want to update this cell?")){
+            var cell = document.getElementById('DESCRIERE_COMERCIALA_' + id);
+            var newValue = cell.innerText;
+
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://localhost/APa/api/update-system.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.status === "success") {
-                        alert("Row updated successfully.");
-                        // Optionally, update the UI with the new value
-                        document.getElementById(field + "_" + id).innerText = value;
-                    } else {
-                        alert("Error: " + response.message);
-                    }
+            xhr.open('POST', 'http://localhost/APa/api/update-system.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert('Update successful!');
                 }
             };
-            xhr.send("id=" + id + "&field=" + field + "&value=" + value);
+
+            xhr.send('id=' + id + '&value=' + encodeURIComponent(newValue));
             fetchData();
-        } else if(cat==2){
+        }
+        } else if (cat==2){
+            if(confirm("Are you sure you want to update this cell?")){
+            var cell = document.getElementById('DESCRIERE_COMERCIALA_' + id);
+            var newValue = cell.innerText;
+
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://localhost/APa/api/update-system2.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.status === "success") {
-                        alert("Row updated successfully.");
-                        // Optionally, update the UI with the new value
-                        document.getElementById(field + "_" + id).innerText = value;
-                    } else {
-                        alert("Error: " + response.message);
-                    }
+            xhr.open('POST', 'http://localhost/APa/api/update-system2.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert('Update successful!');
                 }
             };
-            xhr.send("id=" + id + "&field=" + field + "&value=" + value);
+
+            xhr.send('id=' + id + '&value=' + encodeURIComponent(newValue));
             fetchData2();
+        }
         } else {
+            if(confirm("Are you sure you want to update this cell?")){
+            var cell = document.getElementById('DESCRIERE_COMERCIALA_' + id);
+            var newValue = cell.innerText;
+
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "http://localhost/APa/api/update-system3.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.status === "success") {
-                        alert("Row updated successfully.");
-                        // Optionally, update the UI with the new value
-                        document.getElementById(field + "_" + id).innerText = value;
-                    } else {
-                        alert("Error: " + response.message);
-                    }
+            xhr.open('POST', 'http://localhost/APa/api/update-system3.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert('Update successful!');
                 }
             };
-            xhr.send("id=" + id + "&field=" + field + "&value=" + value);
+
+            xhr.send('id=' + id + '&value=' + encodeURIComponent(newValue));
             fetchData3();
+        }
         }
         }
 

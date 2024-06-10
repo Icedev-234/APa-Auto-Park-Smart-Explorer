@@ -1,44 +1,60 @@
 <?php
+session_start();
+header('Content-Type: application/json');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "apa";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Replace these variables with your actual database connection details
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "apa";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+    // Connect to the database
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $current_password = $_POST['current_password'];
-    $new_password = $_POST['new_password'];
-
-
-    $sql = "SELECT password FROM users WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('i', $_SESSION['user_id']);
-    $stmt->execute();
-    $stmt->bind_result($hashed_password);
-    $stmt->fetch();
-
-    if ($stmt->num_rows == 1) {
-        $sql = "UPDATE users SET password = ? WHERE id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('si', $new_password, $_SESSION['user_id']);
-        if ($stmt->execute()) {
-            echo "Password changed successfully!";
-            header("Location: ../statistics.php");
-        } else {
-            echo "Error: " . $stmt->error;
-        }
-    } else {
-        echo "Current password is incorrect!";
+    // Check connection
+    if ($conn->connect_error) {
+        die(json_encode(['message' => 'Connection failed: ' . $conn->connect_error]));
     }
 
+    // Retrieve POST data
+    $currentPassword = $_POST['current_password'];
+    $newPassword = $_POST['new_password'];
+    $confirmPassword=$_POST['confirm_password'];
+
+    // Validate the input data (basic validation, you might want to add more)
+    if (empty($currentPassword) || empty($newPassword)) {
+        echo json_encode(['message' => 'All fields are required.']);
+        exit;
+    }
+
+    // Retrieve the user's current password from the database
+    $userId = $_SESSION['user_id']; // Assuming user ID is stored in the session after login
+    $sql = "SELECT password FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($storedPasswordHash);
+    $stmt->fetch();
     $stmt->close();
+
+    // Verify the current password
+    if (!($newPassword==$confirmPassword)) {
+        echo json_encode(['message' => 'Current password is incorrect.']);
+        exit;
+    }
+
+
+    // Update the password in the database
+    $sql = "UPDATE users SET password = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $newPassword, $userId);
+
+    if ($stmt->execute()) {
+        echo json_encode(['message' => 'Password successfully changed.']);
+    } else {
+        echo json_encode(['message' => 'Error updating password.']);
+    }
     $conn->close();
 }
 ?>

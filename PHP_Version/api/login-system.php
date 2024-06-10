@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
+    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username = ? and password = ?");
+    $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($id, $hashed_password);
@@ -34,10 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $cookie_path = "/";
 
         setcookie('user_id', $user_id, time() + (86400 * 30), "/"); // 86400 = 1 day
-        if ($_SESSION['username']=='Admin'){
+        if ($username=='Admin'){
             header("Location: ../admin.php");
-        }
-        else {
+        } else {
         header("Location: ../statistics.php");
         }
         exit();

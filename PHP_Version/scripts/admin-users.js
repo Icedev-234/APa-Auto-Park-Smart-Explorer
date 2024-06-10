@@ -20,11 +20,11 @@ const next=document.getElementById('next');
                 const ROLE=row.ROLE;
                 tr.innerHTML = `
                     <td>${ID}</td>
-                    <td id="User">${USERNAME}</td>
+                    <td contenteditable="true" id="User_${ID}">${USERNAME}</td>
                     <td>${PASSWORD}</td>
                     <td>${ROLE}</td>
                     <td>
-                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateRow(${ID}, 'User', 'modified')">Update</button>
+                    <button id="edit" class="btn btn-primary edit_${ID}" onclick="updateCell(${ID})">Update</button>
                     <button id="delete" class="btn btn-dange delete_${ID}" onclick="deleteRow(${ID})">Delete</button>
                    <span></span>
                   </td>
@@ -35,11 +35,7 @@ const next=document.getElementById('next');
                 
 
                 editButton.addEventListener("click", function(){
-                 if(editButton.textContent=="Update"){
-                  editButton.textContent=="Save";
-                 }else{
-                    updateRow(ID,username,"modified");
-                 }
+                  updateCell(ID);
                 });
 
                 deleteButton.addEventListener("click", function(){
@@ -59,7 +55,7 @@ const next=document.getElementById('next');
     function deleteRow(id) {
         if (confirm("Are you sure you want to delete this row?")) {
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "delete-system-admin.php", true);
+            xhr.open("POST", "http://localhost/APa/api/delete-system-admin.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
@@ -77,24 +73,24 @@ const next=document.getElementById('next');
         }
     }
 
-    function updateRow(id, field, value) {
+    function updateCell(id) {
+        if(confirm("Are you sure you want to update this cell?")){
+        var cell = document.getElementById('User_' + id);
+        var newValue = cell.innerText;
+
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "update-system-admin.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.status === "success") {
-                    alert("Row updated successfully.");
-                    // Optionally, update the UI with the new value
-                    document.getElementById(field + "_" + id).innerText = value;
-                } else {
-                    alert("Error: " + response.message);
-                }
+        xhr.open('POST', 'http://localhost/APa/api/update-system-admin.php', true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert('Update successful!');
             }
         };
-        xhr.send("id=" + id + "&field=" + field + "&value=" + value);
+
+        xhr.send('id=' + id + '&value=' + encodeURIComponent(newValue));
     }
+}
 
     fetchData();
 

@@ -1,30 +1,32 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "apa";
+// update.php
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Database connection settings
+$host = 'localhost';
+$db = 'apa';
+$user = 'root';
+$pass = '';
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo 'Connection failed: ' . $e->getMessage();
+    exit;
 }
 
-if (isset($_POST['id']) && isset($_POST['field']) && isset($_POST['value'])) {
-    $id = intval($_POST['id']);
-    $field = $_POST['field'];
-    $value = $_POST['value'];
-    $sql = "UPDATE data2 SET $field = '$value' WHERE id = $id";
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["status" => "success"]);
-    } else {
-        echo json_encode(["status" => "error", "message" => $conn->error]);
-    }
+// Retrieve the POST data
+$id = $_POST['id'];
+$value = $_POST['value'];
+
+// Update the database
+$stmt = $pdo->prepare("UPDATE data2 SET DESCRIERE_COMERCIALA = :value WHERE id = :id");
+$stmt->bindParam(':value', $value);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+if ($stmt->execute()) {
+    echo 'Update successful';
 } else {
-    echo json_encode(["status" => "error", "message" => "Invalid parameters"]);
+    echo 'Update failed';
 }
-
-$conn->close();
 ?>

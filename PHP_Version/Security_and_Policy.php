@@ -59,10 +59,13 @@ echo $_SESSION['username'];
                     <input type="password" id="confirm_password" placeholder="Confirm new password" name="confirm_password"><br><br>
 
                     <button type="submit">Save</button>
+
+                    <p id="responseMessage"></p>
                 </div>
             </div>
         </form>
       </div>
       <script src="./scripts/main.js"></script>
+      <script src="./scripts/Security_And_Policy.js"></script>
 </body>
 </html>

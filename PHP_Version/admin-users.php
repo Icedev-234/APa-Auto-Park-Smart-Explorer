@@ -41,7 +41,7 @@
         <div class="bx bx-menu" id="menu-icon"></div>
         
         <ul class="navbar">
-          <li><a href="./admin.php"><i class='bx bx-cog' ></i>Parking Data</a></li>
+          <li><a href="./admin.php"><i class='bx bx-data' ></i>Parking Data</a></li>
           <li><a href="./admin-users.php" ><i class='bx bx-group'></i>Users Data</a></li>
       </ul>
         <a href="api/logout.php" class="btn">
