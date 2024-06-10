@@ -70,6 +70,7 @@ const next=document.getElementById('next');
                 }
             };
             xhr.send("id=" + id);
+            fetchData();
         }
     }
 
@@ -89,6 +90,7 @@ const next=document.getElementById('next');
         };
 
         xhr.send('id=' + id + '&value=' + encodeURIComponent(newValue));
+        fetchData();
     }
 }
 
