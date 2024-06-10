@@ -585,17 +585,25 @@ function downloadWebP(canvas, filename) {
 }
 
 function downloadSVG(filename) {
-  const svgContext = C2S(myChart.width, myChart.height);
-  myChart.draw(svgContext);
-  const svg = svgContext.getSerializedSvg();
+  var canvas = document.getElementById('chart');
+  var canvasWidth = canvas.width;
+  var canvasHeight = canvas.height;
+  var canvasDataURL = canvas.toDataURL("image/png");
 
-  const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-  const downloadLink = document.createElement('a');
-  downloadLink.download = filename;
-  downloadLink.href = URL.createObjectURL(svgBlob);
-  downloadLink.style.display = 'none';
+  var svgData = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="${canvasWidth}" height="${canvasHeight}">
+          <image href="${canvasDataURL}" x="0" y="0" width="${canvasWidth}" height="${canvasHeight}" />
+      </svg>
+  `;
+  
+  var svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+  var svgUrl = URL.createObjectURL(svgBlob);
+  var downloadLink = document.createElement('a');
+  downloadLink.href = svgUrl;
+  downloadLink.download = 'chart.svg';
   document.body.appendChild(downloadLink);
   downloadLink.click();
+  document.body.removeChild(downloadLink);
 }
 
 
