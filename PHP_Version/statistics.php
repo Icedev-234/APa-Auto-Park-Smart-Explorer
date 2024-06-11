@@ -42,7 +42,7 @@
             <li><a href="./Security_and_Policy.php"><i class='bx bx-cog' ></i>Security and Policy</a></li>
             <li><a href="./statistics.php" ><i class='bx bx-stats' ></i>Statistics</a></li>
         </ul>
-      <a href="api/logout.php" class="btn">
+        <a href="api/logout.php" class="btn">
       <?php
 include 'api/login-system.php';
 if (!isset($_SESSION['user_id'])&& !isset($_COOKIE['user_id'])) {
@@ -164,7 +164,6 @@ echo $_SESSION['username'];
 
     <script src="./scripts/statistics.js"></script>
     <script src="./scripts/main.js"></script>
-
 
   </body>
 

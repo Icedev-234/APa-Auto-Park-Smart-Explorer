@@ -53,7 +53,7 @@ echo $_SESSION['username'];
             <h3>Features:</h3>
             <ul>
                 <li>Visualize and compare data about auto parks</li>
-                <li>Use public data from DATA.GOV via API REST/GraphQL</li>
+                <li>Use public data from DATA.PHP via API REST/GraphQL</li>
                 <li>Statistics and comparisons based on multiple criteria</li>
                 <li>Generate at least three types of visualizations</li>
                 <li>Export visualizations in CSV, WebP and SVG formats</li>
