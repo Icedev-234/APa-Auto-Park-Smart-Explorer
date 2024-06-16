@@ -71,11 +71,24 @@ echo $_SESSION['username'];
             <option value="autobuz">Autobuz</option>
             <option value="autoturism">Autoturism</option>
               <option value="autovehicul">Autovehicul</option>
+              <option value="autovehicul special">Autovehicul Special</option>
+              <option value="autospeciala">Autospeciala</option>
+              <option value="autorulota">Autorulota</option>
+              <option value="microbuz">Microbuz</option>
                 <option value="remorca">Remorca</option>
+                <option value="moped">Moped</option>
+                <option value="motocar">Motocar</option>
+                <option value="motocicleta">Motocicleta</option>
+                <option value="motociclu">Motociclu</option>
+                <option value="motocvadriciclu">Motocvadriciclu</option>
+                <option value="motoreta">Motoreta</option>
+                <option value="remorca">Remorca</option>
+                <option value="remorca agricola sau forestiera">Remorca Agricola sau Forestiera</option>
+                <option value="remorca speciala">Remorca Speciala</option>
                 <option value="semiremorca">Semiremorca</option>
-                <option value="autovehicul special">Autovehicul Special</option>
                 <option value="autoutilitara">Autoutilitara</option>
                 <option value="tractor">Tractor</option>
+                <option value="tractor rutier">Tractor Rutier</option>
                 <option value="automorcher">Automorcher</option>
                 <option value="automobil mixt">Automobil Mixt</option>
           </select>
@@ -99,29 +112,38 @@ echo $_SESSION['username'];
           <option value="Dolj">Dolj</option>
           <option value="Galati">Galati</option>
           <option value="Giurgiu">Giurgiu</option>
+          <option value="Vrancea">Vrancea</option>
          </select>
         </div>
         <label id="classroom-label">Categorie</label>
         <div class="select-box">
          <select id="select-classroom select-3">
           <option value="M1">M1</option>
+          <option value="M1G">M1G</option>
           <option value="M2">M2</option>
           <option value="M3">M3</option>
           <option value="N1">N1</option>
+          <option value="N1G">N1G</option>
           <option value="N2">N2</option>
           <option value="N3">N3</option>
           <option value="N2G">N2G</option>
+          <option value="N3G">N3G</option>
           <option value="O1">O1</option>
           <option value="O2">O2</option>
           <option value="O3">O3</option>
           <option value="O4">O4</option>
           <option value="L1e">L1e</option>
           <option value="L3e">L3e</option>
+          <option value="L4e">L4e</option>
+          <option value="L5e">L5e</option>
+          <option value="L6e">L6e</option>
+          <option value="L6e">L6e</option>
           <option value="T1">T1</option>
           <option value="T2">T2</option>
           <option value="T3">T3</option>
           <option value="T4">T4</option>
           <option value="T5">T5</option>
+          <option value="R3A">R3A</option>
          </select>
         </div>
         <div class="select-box">
