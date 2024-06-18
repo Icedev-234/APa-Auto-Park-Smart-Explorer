@@ -20,12 +20,7 @@
         </a>
         <div class="bx bx-menu" id="menu-icon"></div>
         
-        <ul class="navbar">
-            <li><a href="#"><i class='bx bx-question-mark'></i>About</a></li>
-              <li><a href="#"><i class='bx bxs-contact' ></i>Contact</a></li>
-            <li><a href="#"><i class='bx bx-cog' ></i>Security and Policy</a></li>
-            <li><a href="#" ><i class='bx bx-stats' ></i>Statistics</a></li>
-        </ul>
+        
           <a href="#" class="btn">
             Log in <i class='bx bxs-user-detail' ></i>
           </a>
