@@ -1,0 +1,153 @@
+/*background*/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    background-image: url('../images/back_ground.png');
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.content{
+    min-height: 100vh;
+}
+
+
+.box {
+    margin-top: 50px;
+    position: absolute;
+    width: 33%;
+    height: fit-content;
+    left: 32%;
+    top: 10%;
+    background: #FAF8F1;
+    border-radius: 30px;
+    font-size: 1vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    margin-top: 22%;
+    padding-left: 10%;
+    margin-bottom: 5%;
+}
+
+
+/* Name */
+.box label {
+    width: 19%;
+    margin-top: 6px;
+    margin-left: 19%;
+    position: relative;
+    font-style: normal;
+    color: #e5ba73;
+    font-size: 1.5vw;
+}
+
+.box h1 {
+    margin-left: 39%;
+    margin-bottom: 10%;
+    margin-top: 19%;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    color: #e5ba73;
+}
+
+.box h2 {
+    margin: 5px;
+    font-style: normal;
+    font-size: small;
+    padding: 20px 19px;
+    color: black;
+    display: block;
+    margin-left: 19%;
+    margin-bottom: 4%;
+}
+
+.box h3 {
+    font-size: 199%;
+    margin-top: 0%;
+    margin-left: 2%;
+}
+
+
+.box .img {
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 39%;
+}
+
+@media only screen and (max-width: 769px) {
+    .box {
+        left: 14%;
+        width: 68%;
+        font-size: 2vw;
+        top: 19%
+    }
+
+    .box h1 {
+        margin-left: 44%;
+        font-size: 3vw;
+    }
+
+    .box h2 {
+        margin-left: 19%;
+        font-size: 3vw;
+    }
+
+    .box button {
+        font-size: 3vw;
+        margin-left: 29%;
+    }
+
+    .box label {
+        font-size: 3vw;
+        margin-top: 2%;
+    }
+}
+
+@media only screen and (min-width: 449px) and (max-width:579px) {
+    .box button {
+        margin-left: 34%;
+    }
+
+    .box {
+        width: 54%;
+        left: 19%;
+    }
+
+    .box h2 {
+        margin-left: 9%;
+    }
+
+    .box h1 {
+        margin-left: 39%;
+    }
+
+}
+
+@media only screen and (min-width: 579px) and (max-width:809px) {
+    .box {
+        width: 49%;
+        left: 24%;
+    }
+
+    .box h2 {
+        margin-left: 21%;
+        font-size: 2vw;
+    }
+
+    .box h1 {
+        margin-left: 39%;
+    }
+}
