@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->num_rows == 1) {
         $_SESSION['user_id'] = $id;
         $_SESSION['username'] = $username;
-        $cookie_name = "user_session";
+        $cookie_name = "user_id";
         $cookie_value = session_id();
-        $cookie_expiration = time() + (86400 * 30); // 30 days
+        $cookie_expiration = time() + (86400 * 2); // 2 days
         $cookie_path = "/";
 
-        setcookie('user_id', $user_id, time() + (86400 * 30), "/"); // 86400 = 1 day
+        setcookie($cookie_name, $cookie_value, $cookie_expiration, $cookie_path); // 86400 = 1 day
         if ($username=='Admin'){
             header("Location: ../admin.php");
         } else {

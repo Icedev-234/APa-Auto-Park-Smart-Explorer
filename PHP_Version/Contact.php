@@ -34,16 +34,11 @@
       <a href="api/logout.php" class="btn">
       <?php
 include 'api/login-system.php';
-if (!isset($_SESSION['user_id'])&& !isset($_COOKIE['user_id'])) {
-    header("Location: login.php");
-    exit;
+if ((!isset($_SESSION['user_id'])|| ($_SESSION['username']=='Admin'))|| !isset($_COOKIE['user_id'])) {
+  header("Location: login.php");
+  exit;
 }
 
-if ($_SESSION['username']=='Admin') {
-    header("Location: admin.php");
-    
-    exit();
-  }
 
 echo $_SESSION['username'];
 ?> <i class='bx bxs-user-detail' ></i>

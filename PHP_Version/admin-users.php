@@ -27,9 +27,7 @@
 <body>
 <?php 
   include 'api/login-system.php';
-  if ($_SESSION['username']!='Admin') {
-    session_unset();
-  session_destroy();
+  if (($_SESSION['username']!='Admin')&& !isset($_COOKIE['user_id'])){
     header("Location: login.php");
     exit();
   }
