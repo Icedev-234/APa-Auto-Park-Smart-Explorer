@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Contact</title>
+
+    <link rel="stylesheet" href="/static/styles/header.css" >
+    <link rel="stylesheet" href="/static/styles/contact.css" >
+
+    <link rel="icon" href="/static/images/logo_car.png" type="image/png">
+
+    <!-- Pune iconitele la header-->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body style="background-image: url('./static/images/back_ground.png')">
+  <header>
+    <a href="/" class="logo">
+        <i class='bx bxs-car'></i> APa
+    </a>
+    <ul class="navbar" id="navbar">
+        <!-- Link-uri statice, vor fi completate dinamic cu JavaScript -->
+    </ul>
+    <div id="auth-controls">
+        <!-- Butonul de login/logout, va fi completat dinamic cu JavaScript -->
+    </div>
+  </header>
+
+    <div class="content">
+        <form method="post">
+            <div class="box">
+                <div class="img">
+                    <img src="/static/images/logo_car.png" alt="Logo" style="width:29%; height:19%">
+                </div>
+
+                <h1>Contact Us</h1>
+
+                <div class="container">
+                    <label>Rosca Victor</label><br>
+                    <a  href="https://github.com/Icedev-234/APa-Auto-Park-Smart-Explorer"> roscavictor2000@gmail.com </a><br><br>
+                    
+                    <label>Rotaru Alex</label><br>
+                    <a href="https://github.com/Icedev-234/APa-Auto-Park-Smart-Explorer"> Alexrotari740@gmail.com </a><br><br>
+                </div>
+            </div>
+        </form><br><br>
+    </div>
+    
+    <script src="/static/scripts/main.js"></script>
+
+    <script>
+      // JavaScript pentru a verifica starea de autentificare și a actualiza DOM-ul
+      document.addEventListener('DOMContentLoaded', function() {
+          const navbar = document.getElementById('navbar');
+          const authControls = document.getElementById('auth-controls');
+  
+          if (isLoggedIn()) {
+              // Utilizatorul este logat
+              navbar.innerHTML = `
+                  <li><a href="/about"><i class='bx bx-question-mark'></i> About</a></li>
+                  <li><a href="/contact"><i class='bx bxs-contact'></i> Contact</a></li>
+                  ${isAdminUser() ? '<li><a href="/admin"><i class="bx bx-cog"></i> Admin Module</a></li>' : ''}
+                  <li><a href="/statistics"><i class='bx bx-stats'></i> Statistics</a></li>
+              `;
+              authControls.innerHTML = `
+                  <form action="/logout" method="post">
+                      <input type="hidden" name="next" value="/statistics">
+                      <button type="submit" class="btn logout">Log off</button>
+                  </form>
+              `;
+          } else {
+              // Utilizatorul nu este logat
+              navbar.innerHTML = `
+                  <li><a href="/about"><i class='bx bx-question-mark'></i> About</a></li>
+                  <li><a href="/contact"><i class='bx bxs-contact'></i> Contact</a></li>
+                  <li><a href="/statistics"><i class='bx bx-stats'></i> Statistics</a></li>
+              `;
+              authControls.innerHTML = `
+                  <a href="/login" class="btn">Log in</a>
+              `;
+          }
+      });
+  
+      function isLoggedIn() {
+          // Funcție care verifică dacă utilizatorul este logat bazat pe cookie-uri sau altă metodă
+          const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+          for (const cookie of cookies) {
+              if (cookie.startsWith('logged_in=')) {
+                  return cookie.split('=')[1] === 'True';
+              }
+          }
+          return false;
+      }
+  
+      function isAdminUser() {
+          const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+          for (const cookie of cookies) {
+              if (cookie.startsWith('username=')) {
+                  return cookie.split('=')[1] === 'admin';
+              }
+          }
+          return false;
+      }
+  
+    </script>
+</body>
+
+</html>
