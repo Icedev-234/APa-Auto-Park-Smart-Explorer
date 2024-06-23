@@ -146,7 +146,7 @@ resultsButton.addEventListener("click", async function () {
           },
         }
               });  
-             case 'doughnut':
+             case 'pie':
               myChart = new Chart(ctx, {
                 type: "doughnut",
                 data: {

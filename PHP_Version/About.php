@@ -25,12 +25,12 @@
             <li><a href="./Security_and_Policy.php"><i class='bx bx-cog' ></i>Security and Policy</a></li>
             <li><a href="./statistics.php" ><i class='bx bx-stats' ></i>Statistics</a></li>
         </ul>
-      <a href="api/logout.php" class="btn">
+        <a href="api/logout.php" class="btn">
       <?php
 include 'api/login-system.php';
 if ((!isset($_SESSION['user_id'])|| ($_SESSION['username']=='Admin'))|| !isset($_COOKIE['user_id'])) {
-  header("Location: login.php");
-  exit;
+    header("Location: login.php");
+    exit;
 }
 
 
