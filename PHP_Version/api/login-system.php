@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "apa";
+$dbname = "apa2";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

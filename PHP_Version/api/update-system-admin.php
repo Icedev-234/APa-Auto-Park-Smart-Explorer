@@ -3,7 +3,7 @@
 
 // Database connection settings
 $host = 'localhost';
-$db = 'apa';
+$db = 'apa2';
 $user = 'root';
 $pass = '';
 

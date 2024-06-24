@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "apa";
+    $dbname = "apa2";
 
     // Connect to the database
     $conn = new mysqli($servername, $username, $password, $dbname);
