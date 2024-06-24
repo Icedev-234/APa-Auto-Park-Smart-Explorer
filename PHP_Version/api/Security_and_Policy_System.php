@@ -1,6 +1,5 @@
 <?php
 session_start();
-header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Replace these variables with your actual database connection details
@@ -24,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate the input data (basic validation, you might want to add more)
     if (empty($currentPassword) || empty($newPassword)) {
-        echo json_encode(['message' => 'All fields are required.']);
+        echo 'All fields are required.';
         exit;
     }
 
@@ -40,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Verify the current password
     if (!($newPassword==$confirmPassword)) {
-        echo json_encode(['message' => 'Current password is incorrect.']);
+        echo 'Current password is incorrect.';
         exit;
     }
 
@@ -51,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("si", $newPassword, $userId);
 
     if ($stmt->execute()) {
-        echo json_encode(['message' => 'Password successfully changed.']);
+        echo 'Password successfully changed.';
     } else {
-        echo json_encode(['message' => 'Error updating password.']);
+        echo 'Error updating password.';
     }
     $conn->close();
 }

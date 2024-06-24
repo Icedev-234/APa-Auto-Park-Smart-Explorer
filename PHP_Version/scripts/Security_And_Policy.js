@@ -16,8 +16,11 @@ function changePassword() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = JSON.parse(xhr.responseText);
-                    document.getElementById('responseMessage').innerText = response.message;
-            alert("Password successfully changed!");
+                        if (response.status === "success") {
+                            alert("Password successfully changed!");
+                        } else {
+                            alert("Error: " + response.message);
+                        }
         }
     };
 
