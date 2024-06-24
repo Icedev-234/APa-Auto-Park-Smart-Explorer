@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 const AN= row.AN;
                 tr.innerHTML = `
                     <td>${ID}</td>
-                    <td>${JUDET}</td>
-                    <td>${CATEGORIE_NATIONALA}</td>
-                    <td>${CATEGORIE_COMUNITARA}</td>
-                    <td>${MARCA}</td>
+                    <td contenteditable="true" id="JUDET_${ID}">${JUDET}</td>
+                    <td contenteditable="true" id="CATEGORIE_NATIONALA_${ID}">${CATEGORIE_NATIONALA}</td>
+                    <td contenteditable="true" id="CATEGORIA_COMUNITARA_${ID}">${CATEGORIE_COMUNITARA}</td>
+                    <td contenteditable="true" id="MARCA_${ID}">${MARCA}</td>
                     <td contenteditable="true" id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
                     <td>${AN}</td>
                     <td>
@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 const AN= row.AN;
                 tr.innerHTML = `
                     <td>${ID}</td>
-                    <td>${JUDET}</td>
-                    <td>${CATEGORIE_NATIONALA}</td>
-                    <td>${CATEGORIE_COMUNITARA}</td>
-                    <td>${MARCA}</td>
+                    <td contenteditable="true" id="JUDET_${ID}">${JUDET}</td>
+                    <td contenteditable="true" id="CATEGORIE_NATIONALA_${ID}">${CATEGORIE_NATIONALA}</td>
+                    <td contenteditable="true" id="CATEGORIA_COMUNITARA_${ID}">${CATEGORIE_COMUNITARA}</td>
+                    <td contenteditable="true" id="MARCA_${ID}">${MARCA}</td>
                     <td contenteditable="true" id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
                     <td>${AN}</td>
                     <td>
@@ -146,10 +146,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 const AN= row.AN;
                 tr.innerHTML = `
                     <td>${ID}</td>
-                    <td>${JUDET}</td>
-                    <td>${CATEGORIE_NATIONALA}</td>
-                    <td>${CATEGORIE_COMUNITARA}</td>
-                    <td>${MARCA}</td>
+                    <td contenteditable="true" id="JUDET_${ID}">${JUDET}</td>
+                    <td contenteditable="true" id="CATEGORIE_NATIONALA_${ID}">${CATEGORIE_NATIONALA}</td>
+                    <td contenteditable="true" id="CATEGORIA_COMUNITARA_${ID}">${CATEGORIE_COMUNITARA}</td>
+                    <td contenteditable="true" id="MARCA_${ID}">${MARCA}</td>
                     <td contenteditable="true" id="DESCRIERE_COMERCIALA_${ID}">${DESCRIERE_COMERCIALA}</td>
                     <td>${AN}</td>
                     <td>
@@ -256,7 +256,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         fetchData();
-     
+
+        
+        
+        
+
+
         function deleteRow(id) {
             if(cat==1){
             if (confirm("Are you sure you want to delete this row?")) {
@@ -324,8 +329,16 @@ document.addEventListener('DOMContentLoaded', function () {
         function updateCell(id) {
             if(cat==1){
                 if(confirm("Are you sure you want to update this cell?")){
-            var cell = document.getElementById('DESCRIERE_COMERCIALA_' + id);
-            var newValue = cell.innerText;
+                    var cell1 = document.getElementById('JUDET_' + id);
+            var newValue1 = cell1.innerText;
+                    var cell2 = document.getElementById('CATEGORIE_NATIONALA_' + id);
+            var newValue2 = cell2.innerText;
+                    var cell3 = document.getElementById('CATEGORIA_COMUNITARA_' + id);
+            var newValue3 = cell3.innerText;
+                    var cell4 = document.getElementById('MARCA_' + id);
+            var newValue4 = cell4.innerText;
+            var cell5 = document.getElementById('DESCRIERE_COMERCIALA_' + id);
+            var newValue5 = cell5.innerText;
 
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://localhost/APa/api/update-system.php', true);
@@ -337,44 +350,58 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
 
-            xhr.send('id=' + id + '&value=' + encodeURIComponent(newValue));
+            xhr.send('id=' + id + '&value1=' + encodeURIComponent(newValue1) + '&value2=' + encodeURIComponent(newValue2) + '&value3=' + encodeURIComponent(newValue3) + '&value4=' + encodeURIComponent(newValue4) +  '&value5=' + encodeURIComponent(newValue5));
             fetchData();
         }
         } else if (cat==2){
-            if(confirm("Are you sure you want to update this cell?")){
-            var cell = document.getElementById('DESCRIERE_COMERCIALA_' + id);
-            var newValue = cell.innerText;
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost/APa/api/update-system2.php', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert('Update successful!');
-                }
-            };
-
-            xhr.send('id=' + id + '&value=' + encodeURIComponent(newValue));
-            fetchData2();
+            if(confirm("Are you sure you want to update this cell?")){var cell1 = document.getElementById('JUDET_' + id);
+                var newValue1 = cell1.innerText;
+                        var cell2 = document.getElementById('CATEGORIE_NATIONALA_' + id);
+                var newValue2 = cell2.innerText;
+                        var cell3 = document.getElementById('CATEGORIA_COMUNITARA_' + id);
+                var newValue3 = cell3.innerText;
+                        var cell4 = document.getElementById('MARCA_' + id);
+                var newValue4 = cell4.innerText;
+                var cell5 = document.getElementById('DESCRIERE_COMERCIALA_' + id);
+                var newValue5 = cell5.innerText;
+    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://localhost/APa/api/update-system2.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert('Update successful!');
+                    }
+                };
+    
+                xhr.send('id=' + id + '&value1=' + encodeURIComponent(newValue1) + '&value2=' + encodeURIComponent(newValue2) + '&value3=' + encodeURIComponent(newValue3) + '&value4=' + encodeURIComponent(newValue4) +  '&value5=' + encodeURIComponent(newValue5));
+                fetchData2();
         }
         } else {
-            if(confirm("Are you sure you want to update this cell?")){
-            var cell = document.getElementById('DESCRIERE_COMERCIALA_' + id);
-            var newValue = cell.innerText;
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost/APa/api/update-system3.php', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert('Update successful!');
-                }
-            };
-
-            xhr.send('id=' + id + '&value=' + encodeURIComponent(newValue));
-            fetchData3();
+            if(confirm("Are you sure you want to update this cell?")){var cell1 = document.getElementById('JUDET_' + id);
+                var newValue1 = cell1.innerText;
+                        var cell2 = document.getElementById('CATEGORIE_NATIONALA_' + id);
+                var newValue2 = cell2.innerText;
+                        var cell3 = document.getElementById('CATEGORIA_COMUNITARA_' + id);
+                var newValue3 = cell3.innerText;
+                        var cell4 = document.getElementById('MARCA_' + id);
+                var newValue4 = cell4.innerText;
+                var cell5 = document.getElementById('DESCRIERE_COMERCIALA_' + id);
+                var newValue5 = cell5.innerText;
+    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://localhost/APa/api/update-system3.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert('Update successful!');
+                    }
+                };
+    
+                xhr.send('id=' + id + '&value1=' + encodeURIComponent(newValue1) + '&value2=' + encodeURIComponent(newValue2) + '&value3=' + encodeURIComponent(newValue3) + '&value4=' + encodeURIComponent(newValue4) +  '&value5=' + encodeURIComponent(newValue5));
+                fetchData3();
         }
         }
         }

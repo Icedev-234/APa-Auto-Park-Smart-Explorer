@@ -154,6 +154,16 @@
     font-size: 50px;
   }
   
+
+  input{
+    text-align: center;
+    padding: 10px 10px;
+    border: 1px solid #2C3E50;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+
   .table-container {
     width: 100%;
     overflow-x: auto;
@@ -244,7 +254,7 @@
     cursor: pointer;
   }
 
-  #int3{
+  #int3, #int4{
     text-align: center;
     padding: 20px 40px;
     border: 1px solid #2C3E50;
@@ -255,7 +265,7 @@
     cursor: pointer;
   }
 
-  #int1:hover, #int2:hover, #int3:hover{
+  #int1:hover, #int2:hover, #int3:hover, #int4:hover{
     background: rgb(56, 71, 95);
       transition: 0.3s linear;
   }
