@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/static/styles/header.css">
+    <link rel="stylesheet" href="/static/styles/admin.css">
+
+    <link rel="icon" href="/static/images/logo_car.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>APa - Auto Park Smart Exporer</title>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo"><i class='bx bxs-car'></i> APa</a>
+    <ul class="navbar" id="navbar"></ul>
+    <div id="auth-controls"></div>
+  </header>
+
+  <div id="main">
+    <div class="users-container">
+        <h1>Admin Dashboard</h1>
+
+        <span id="btnNew" class="btnNew">Add New Entry</span>
+
+        <form method="POST" class="modal-form" id="createForm">
+            <label for="judet">Judet</label>
+            <input type="text" id="judet" name="judet" autocomplete="off" required />
+
+            <label for="categorie_nationala">Categorie Nationala:</label>
+            <input type="text" id="categorie_nationala" name="categorie_nationala" autocomplete="off" required />
+
+            <label for="categorie_comunitara">Categorie Comunitara:</label>
+            <input type="text" id="categorie_comunitara" name="categorie_comunitara" autocomplete="off" required />
+
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" autocomplete="off" required />
+
+            <button type="submit">Create</button>
+        </form>
+
+
+
+        <div class="table-container">
+            <table id="user-table">
+                <thead>
+                    <tr>
+                        <th>Judet</th>
+                        <th>Categorie Nationala</th>
+                        <th>Categorie Comunitara</th>
+                        <th>Marca</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Aici vor fi adaugate dinamic randurile tabelului -->
+                </tbody>
+            </table>
+        </div>
+        <div class="table-control">
+            <button id="previous" onclick="decrementPage()">❮</button>
+            <button id="next" onclick="incrementPage()">❯</button>
+        </div>
+    </div>
+  </div>
+
+  <script src="/static/scripts/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbar = document.getElementById('navbar');
+        const authControls = document.getElementById('auth-controls');
+
+        const btnNew = document.getElementById('btnNew'); // Referinta catre butonul Add New Entry
+        const createForm = document.getElementById('createForm'); // Referinta catre formularul de creare
+
+        if (isLoggedIn()) {
+            navbar.innerHTML = `
+                <li><a href="/about"><i class='bx bx-question-mark'></i> About</a></li>
+                <li><a href="/contact"><i class='bx bxs-contact'></i> Contact</a></li>
+                ${isAdminUser() ? '<li><a href="/admin"><i class="bx bx-cog"></i> Admin Module</a></li>' : ''}
+                <li><a href="/statistics"><i class='bx bx-stats'></i> Statistics</a></li>
+            `;
+            authControls.innerHTML = `
+                <form action="/logout" method="post">
+                    <input type="hidden" name="next" value="/statistics">
+                    <button type="submit" class="btn logout">Log off</button>
+                </form>
+            `;
+        } else {
+            navbar.innerHTML = `
+                <li><a href="/about"><i class='bx bx-question-mark'></i> About</a></li>
+                <li><a href="/contact"><i class='bx bxs-contact'></i> Contact</a></li>
+                <li><a href="/statistics"><i class='bx bx-stats'></i> Statistics</a></li>
+            `;
+            authControls.innerHTML = `<a href="/login" class="btn">Log in</a>`;
+        }
+
+        btnNew.addEventListener('click', function() {
+            createForm.reset();
+        });
+
+        createForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            createData();
+        });
+    });
+    function isLoggedIn() {
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+        for (const cookie of cookies) {
+            if (cookie.startsWith('logged_in=')) {
+                return cookie.split('=')[1] === 'True';
+            }
+        }
+        return false;
+    }
+    function isAdminUser() {
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+        for (const cookie of cookies) {
+            if (cookie.startsWith('username=')) {
+                return cookie.split('=')[1] === 'admin';
+            }
+        }
+        return false;
+    }
+  </script>
+
+  <script src="/static/scripts/admin/population.js"></script>
+
+  <script src="/static/scripts/admin/create_data.js"></script>
+  <script src="/static/scripts/admin/delete_data.js"></script>
+  <script src="/static/scripts/admin/edit_data.js"></script>
+  <script src="/static/scripts/admin/get_data.js"></script>
+
+  
+  
+</body>
+</html>
