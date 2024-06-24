@@ -256,10 +256,134 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         fetchData();
+        
+        const int4=document.getElementById('int4');
+        int4.addEventListener("click", function(){
+            addData();
+        })
+        
+        function addData() {
+    let judet = prompt("Judet:");
+    let categorie_nationala = prompt("Categorie Nationala:");
+    let categoria_comunitara = prompt("Categoria Comunitara:");
+    let marca = prompt("Marca:");
+    let descriere_comerciala = prompt("Descriere Comerciala:");
+    let total = prompt("Total:");
+    let an= "0";
+    if(cat==1){
+    let an1= prompt("An (2013 sau 2014):");
+    an=an1;
+    } else if (cat==2){
+        let an2= prompt("An (2015 sau 2016):");
+        an=an2;
+    } else {
+       let an3= "2017";
+       an=an3;
+    }
+    if (judet && categorie_nationala && categoria_comunitara && marca && descriere_comerciala && total && an) {
+        if(cat==1){
+        if(confirm("Are you sure you want to insert the following?")){
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost/APa/api/insert-system.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-        
-        
-        
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                let newRow = JSON.parse(xhr.responseText);
+                let table = document.getElementById("user-table").getElementsByTagName('tbody')[0];
+                let row = table.insertRow();
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                let cell4 = row.insertCell(3);
+                let cell5 = row.insertCell(4);
+                let cell6 = row.insertCell(5);
+                let cell7 = row.insertCell(6);
+                cell1.innerHTML = newRow.id;
+                cell2.innerHTML = newRow.value1;
+                cell3.innerHTML = newRow.value2;
+                cell4.innerHTML = newRow.value3;
+                cell5.innerHTML = newRow.value4;
+                cell6.innerHTML = newRow.value5;
+                cell7.innerHTML = newRow.value7;
+                alert("Row Successfully inserted into table!");
+            }
+        };
+
+        let params = "value1=" + encodeURIComponent(judet) + "&value2=" + encodeURIComponent(categorie_nationala) + "&value3=" + encodeURIComponent(categoria_comunitara) + "&value4=" + encodeURIComponent(marca) + "&value5=" + encodeURIComponent(descriere_comerciala) + "&value6=" + encodeURIComponent(total) + "&value7=" + encodeURIComponent(an);
+        xhr.send(params);
+        fetchData();
+    }
+} else if (cat==2){
+    if(confirm("Are you sure you want to insert the following?")){
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost/APa/api/insert-system2.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                let newRow = JSON.parse(xhr.responseText);
+                let table = document.getElementById("user-table").getElementsByTagName('tbody')[0];
+                let row = table.insertRow();
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                let cell4 = row.insertCell(3);
+                let cell5 = row.insertCell(4);
+                let cell6 = row.insertCell(5);
+                let cell7 = row.insertCell(6);
+                cell1.innerHTML = newRow.id;
+                cell2.innerHTML = newRow.value1;
+                cell3.innerHTML = newRow.value2;
+                cell4.innerHTML = newRow.value3;
+                cell5.innerHTML = newRow.value4;
+                cell6.innerHTML = newRow.value5;
+                cell7.innerHTML = newRow.value7;
+                alert("Row Successfully inserted into table!");
+            }
+        };
+
+        let params = "value1=" + encodeURIComponent(judet) + "&value2=" + encodeURIComponent(categorie_nationala) + "&value3=" + encodeURIComponent(categoria_comunitara) + "&value4=" + encodeURIComponent(marca) + "&value5=" + encodeURIComponent(descriere_comerciala) + "&value6=" + encodeURIComponent(total) + "&value7=" + encodeURIComponent(an);
+        xhr.send(params);
+        fetchData2();
+    }
+} else {
+    if(confirm("Are you sure you want to insert the following?")){
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost/APa/api/insert-system3.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                let newRow = JSON.parse(xhr.responseText);
+                let table = document.getElementById("user-table").getElementsByTagName('tbody')[0];
+                let row = table.insertRow();
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                let cell4 = row.insertCell(3);
+                let cell5 = row.insertCell(4);
+                let cell6 = row.insertCell(5);
+                let cell7 = row.insertCell(6);
+                cell1.innerHTML = newRow.id;
+                cell2.innerHTML = newRow.value1;
+                cell3.innerHTML = newRow.value2;
+                cell4.innerHTML = newRow.value3;
+                cell5.innerHTML = newRow.value4;
+                cell6.innerHTML = newRow.value5;
+                cell7.innerHTML = newRow.value7;
+                alert("Row Successfully inserted into table!");
+            }
+        };
+
+        let params = "value1=" + encodeURIComponent(judet) + "&value2=" + encodeURIComponent(categorie_nationala) + "&value3=" + encodeURIComponent(categoria_comunitara) + "&value4=" + encodeURIComponent(marca) + "&value5=" + encodeURIComponent(descriere_comerciala) + "&value6=" + encodeURIComponent(total) + "&value7=" + encodeURIComponent(an);
+        xhr.send(params);
+        fetchData3();
+    }
+}
+    }
+}
+
 
 
         function deleteRow(id) {

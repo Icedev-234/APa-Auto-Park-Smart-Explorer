@@ -57,7 +57,11 @@
                 <button id="int3">2017</button>
                 </div>
                 </div>
-              
+             <div class="users-container">
+              <div class="buttons">
+                <button id="int4"> Insert Row <button>
+              </div>
+             </div> 
               <div class="table-container">
                 <table id="user-table">
                   <thead>
