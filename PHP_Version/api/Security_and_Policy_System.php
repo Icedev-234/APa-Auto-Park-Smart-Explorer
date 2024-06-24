@@ -17,9 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Retrieve POST data
-    $currentPassword = $_POST['current_password'];
-    $newPassword = $_POST['new_password'];
-    $confirmPassword=$_POST['confirm_password'];
+    $currentPassword = htmlspecialchars($_POST['current_password']);
+    $newPassword = htmlspecialchars($_POST['new_password']);
 
     // Validate the input data (basic validation, you might want to add more)
     if (empty($currentPassword) || empty($newPassword)) {
@@ -37,12 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->fetch();
     $stmt->close();
 
-    // Verify the current password
-    if (!($newPassword==$confirmPassword)) {
-        echo 'Current password is incorrect.';
-        exit;
-    }
-
 
     // Update the password in the database
     $sql = "UPDATE users SET password = ? WHERE id = ?";
@@ -54,6 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo 'Error updating password.';
     }
-    $conn->close();
+
 }
 ?>

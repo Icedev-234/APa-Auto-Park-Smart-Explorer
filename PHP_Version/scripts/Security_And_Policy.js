@@ -1,4 +1,6 @@
-function changePassword() {
+
+document.getElementById('passwordChangeForm').addEventListener('submit',function(e){
+    e.preventDefault();
     var currentPassword = document.getElementById('current_password').value;
     var newPassword = document.getElementById('new_password').value;
     var confirmPassword = document.getElementById('confirm_password').value;
@@ -10,21 +12,17 @@ function changePassword() {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "Security_and_Policy_System.php", true);
+    xhr.open("POST", "api/Security_and_Policy_System.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = JSON.parse(xhr.responseText);
-                        if (response.status === "success") {
-                            alert("Password successfully changed!");
-                        } else {
-                            alert("Error: " + response.message);
-                        }
+            alert("Password successfully changed!");    
         }
     };
 
-    var params = "currentPassword=" + encodeURIComponent(currentPassword) +
-                 "&newPassword=" + encodeURIComponent(newPassword);
+    var params = "current_password=" + encodeURIComponent(currentPassword) +
+                 "&new_password=" + encodeURIComponent(newPassword);
     xhr.send(params);
-}
+
+})

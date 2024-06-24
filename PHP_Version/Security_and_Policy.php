@@ -38,7 +38,7 @@ echo $_SESSION['username'];
           </a>
       </header>
       <div class=content>
-        <form method="post" action="api/Security_and_Policy_System.php">
+        <form method="post" id="passwordChangeForm">
             <div class="box">
                 <h1>Change your password</h1>
                 <div class="container">
@@ -52,8 +52,6 @@ echo $_SESSION['username'];
                     <input type="password" id="confirm_password" placeholder="Confirm new password" name="confirm_password"><br><br>
 
                     <button type="submit">Save</button>
-
-                    <p id="responseMessage"></p>
                 </div>
             </div>
         </form>
