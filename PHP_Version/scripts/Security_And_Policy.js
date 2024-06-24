@@ -6,7 +6,6 @@ document.getElementById('passwordChangeForm').addEventListener('submit',function
     var confirmPassword = document.getElementById('confirm_password').value;
 
     if (newPassword !== confirmPassword) {
-        document.getElementById('responseMessage').innerText = "New passwords do not match.";
         alert("Passwords don't match at all!");
         return;
     }
