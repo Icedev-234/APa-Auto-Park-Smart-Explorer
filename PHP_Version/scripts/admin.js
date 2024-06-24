@@ -299,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 let cell5 = row.insertCell(4);
                 let cell6 = row.insertCell(5);
                 let cell7 = row.insertCell(6);
+                let cell8 = row.insertCell(7);
                 cell1.innerHTML = newRow.id;
                 cell2.innerHTML = newRow.value1;
                 cell3.innerHTML = newRow.value2;
@@ -306,6 +307,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell5.innerHTML = newRow.value4;
                 cell6.innerHTML = newRow.value5;
                 cell7.innerHTML = newRow.value7;
+                cell8.innerHTML=`<td>
+                    <button id="edit" class="btn btn-primary edit_${newRow.id}" onclick="updateCell(${newRow.id})">Update</button>
+                    <button id="delete" class="btn btn-dange delete_${newRow.id}" onclick="deleteRow(${newRow.id})">Delete</button>
+                   <span></span>
+                  </td>`;
                 alert("Row Successfully inserted into table!");
             }
         };
@@ -332,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 let cell5 = row.insertCell(4);
                 let cell6 = row.insertCell(5);
                 let cell7 = row.insertCell(6);
+                let cell8 = row.insertCell(7);
                 cell1.innerHTML = newRow.id;
                 cell2.innerHTML = newRow.value1;
                 cell3.innerHTML = newRow.value2;
@@ -339,6 +346,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell5.innerHTML = newRow.value4;
                 cell6.innerHTML = newRow.value5;
                 cell7.innerHTML = newRow.value7;
+                cell8.innerHTML=`<td>
+                    <button id="edit" class="btn btn-primary edit_${newRow.id}" onclick="updateCell(${newRow.id})">Update</button>
+                    <button id="delete" class="btn btn-dange delete_${newRow.id}" onclick="deleteRow(${newRow.id})">Delete</button>
+                   <span></span>
+                  </td>`;
                 alert("Row Successfully inserted into table!");
             }
         };
@@ -365,6 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 let cell5 = row.insertCell(4);
                 let cell6 = row.insertCell(5);
                 let cell7 = row.insertCell(6);
+                let cell8 = row.insertCell(7);
                 cell1.innerHTML = newRow.id;
                 cell2.innerHTML = newRow.value1;
                 cell3.innerHTML = newRow.value2;
@@ -372,6 +385,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell5.innerHTML = newRow.value4;
                 cell6.innerHTML = newRow.value5;
                 cell7.innerHTML = newRow.value7;
+                cell8.innerHTML=`<td>
+                    <button id="edit" class="btn btn-primary edit_${newRow.id}" onclick="updateCell(${newRow.id})">Update</button>
+                    <button id="delete" class="btn btn-dange delete_${newRow.id}" onclick="deleteRow(${newRow.id})">Delete</button>
+                   <span></span>
+                  </td>`;
                 alert("Row Successfully inserted into table!");
             }
         };
